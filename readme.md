@@ -123,7 +123,7 @@ The `--reuse_saved` flag will reuse previously computed reconstructions if avail
 - `--min_p`: Minimum p-value (default: 1e-12)
 
 #### Post-Processing
-- `--min_event_len`: Minimum event length (default: 5 for LSTM models, 50 for OCSVM)
+- `--min_event_len`: Minimum event length (default: 50)
 - `--dilate_radius`: Dilation radius for events (default: 1)
 
 #### OCSVM-Specific Parameters
@@ -297,7 +297,7 @@ A-1,test,0,0.125,0.458,...,0.791,0
 ### OCSVM vs LSTM Configuration Differences
 
 **OCSVM uses different post-processing defaults:**
-- `min_event_len=50` (vs 5 for LSTM models)
+- `min_event_len=50`
 - This matches your notebook's OCSVM tuning configuration
 - Use `--min_event_len` flag to adjust
 
@@ -307,9 +307,3 @@ A-1,test,0,0.125,0.458,...,0.791,0
 - Ensemble: Weighted combination (0.31*RBF + 0.36*Linear + 0.33*Poly)
 - Components: 90% of features by default (use `--pca_variance_ratio` to adjust)
 
-## Notes
-
-- All hyperparameters match the original notebook implementation
-- The code preserves the exact logic and variable names from your notebook
-- Results should be identical to the notebook when using the same seed and data
-- The framework supports easy extension to additional models or scorers
